@@ -3,17 +3,15 @@ using namespace std;
 
 int main()
 {
-    int i,s =0;
-    do
+    int number = 1, howManyNumbers = 0;
+    cout << "Enter some positive numbers\n";
+
+    while (number > 0)
     {
-        cout << "Enter some positive numbers\n";
-        cin >> i;
-
-            s++;
-
+        cin >> number;
+        ++howManyNumbers;
     }
-    while (i > 0);
-    cout << "The number of positive numbers entered is " << s << "\n";
+    cout << "The number of numbers entered is " << howManyNumbers - 1 << "\n";
 
     return 0;
 }
