@@ -4,7 +4,7 @@
 class Ball
 {
 public:
-    Ball(int width, int height, int positionX, int positionY);
+    Ball(int positionX, int positionY, int width, int height);
 
     int width;
     int height;
