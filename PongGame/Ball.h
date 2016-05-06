@@ -4,11 +4,13 @@
 class Ball
 {
 public:
-    Ball(int positionX, int positionY, int width, int height);
+    Ball(int positionX, int positionY, int width, int height, int speedX, int speedY);
 
-    int width;
-    int height;
     int positionX;
     int positionY;
+    int width;
+    int height;
+    int directionX;
+    int directionY;
 };
 #endif // BALL_H

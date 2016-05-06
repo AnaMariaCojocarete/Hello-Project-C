@@ -33,6 +33,8 @@ private:
     static const int BALL_START_X            = 350;
     static const int BALL_START_Y            = 135;
     static const int BALL_SIZE               = 10;
+    static const int BALL_SPEED_X            = 2;
+    static const int BALL_SPEED_Y            = 2;
     static const int LEFT_RACKET_START_X     = 50;
     static const int LEFT_RACKET_START_Y     = 365;
     static const int LEFT_RACKET_WIDTH       = 20;
@@ -44,9 +46,7 @@ private:
 
     Ui::MainWindow *ui;
     int timerId;
-    Ball ball;
-    int directionX = 2;
-    int directionY = 2;
+    Ball ball ;
     Racket leftRacket;
     Racket rightRacket;
 

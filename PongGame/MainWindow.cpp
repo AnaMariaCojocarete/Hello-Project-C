@@ -8,7 +8,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , ball(BALL_START_X, BALL_START_Y, BALL_SIZE, BALL_SIZE)
+    , ball(BALL_START_X, BALL_START_Y, BALL_SIZE, BALL_SIZE, BALL_SPEED_X, BALL_SPEED_Y)
     , leftRacket(LEFT_RACKET_START_X, LEFT_RACKET_START_Y, LEFT_RACKET_WIDTH, LEFT_RACKET_HEIGHT)
     , rightRacket(RIGHT_RACKET_START_X, RIGHT_RACKET_START_Y, RIGHT_RACKET_WIDTH, RIGHT_RACKET_HEIGHT)
 
@@ -57,16 +57,16 @@ void MainWindow::doPainting() {
 
 void MainWindow::moveBall()
 {
-    ball.positionX += directionX;
+    ball.positionX += ball.directionX;
     if ((ball.positionX >= WINDOW_WIDTH) || (ball.positionX <= 0))
     {
-        directionX *= -1;
+        ball.directionX *= -1;
     }
 
-    ball.positionY += directionY;
+    ball.positionY += ball.directionY;
     if ((ball.positionY >= WINDOW_HEIGHT) || (ball.positionY <=0))
     {
-        directionY *= -1;
+        ball.directionY *= -1;
     }
 }
 
