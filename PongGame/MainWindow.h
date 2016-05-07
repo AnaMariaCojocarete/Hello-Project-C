@@ -6,17 +6,12 @@
 #include "Ball.h"
 #include "Racket.h"
 
-namespace Ui {
-class MainWindow;
-}
-
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
     explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
 
 protected:
     void paintEvent(QPaintEvent *e);
@@ -44,7 +39,6 @@ private:
     static const int RIGHT_RACKET_WIDTH      = 20;
     static const int RIGHT_RACKET_HEIGHT     = 70;
 
-    Ui::MainWindow *ui;
     int timerId;
     Ball ball ;
     Racket leftRacket;

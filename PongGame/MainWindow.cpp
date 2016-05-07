@@ -1,26 +1,20 @@
 #include <QPainter>
+#include <QDebug>
 #include "MainWindow.h"
-#include "ui_MainWindow.h"
 #include "Racket.h"
 #include "Table.h"
 #include "Ball.h"
 
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
     , ball(BALL_START_X, BALL_START_Y, BALL_SIZE, BALL_SIZE, BALL_SPEED_X, BALL_SPEED_Y)
     , leftRacket(LEFT_RACKET_START_X, LEFT_RACKET_START_Y, LEFT_RACKET_WIDTH, LEFT_RACKET_HEIGHT)
     , rightRacket(RIGHT_RACKET_START_X, RIGHT_RACKET_START_Y, RIGHT_RACKET_WIDTH, RIGHT_RACKET_HEIGHT)
 
 {
-    ui->setupUi(this);
     resize(WINDOW_WIDTH, WINDOW_HEIGHT);
     timerId = startTimer(3);
-}
-
-MainWindow::~MainWindow()
-{
-    delete ui;
 }
 
 void MainWindow::paintEvent(QPaintEvent *e) {
@@ -39,7 +33,7 @@ void MainWindow::timerEvent(QTimerEvent *)
 void MainWindow::doPainting() {
     QPainter painter(this);
 
-    Table table(1000, 800);
+    Table table(WINDOW_WIDTH, WINDOW_HEIGHT);
 
     painter.setPen(Qt::black);
     painter.setBrush(QBrush(Qt::black));
@@ -66,6 +60,26 @@ void MainWindow::moveBall()
     ball.positionY += ball.directionY;
     if ((ball.positionY >= WINDOW_HEIGHT) || (ball.positionY <=0))
     {
+        ball.directionY *= -1;
+    }
+
+    if ((ball.positionX <= leftRacket.positionX + LEFT_RACKET_WIDTH) && (ball.positionY > leftRacket.positionY) &&
+            (ball.positionY < (leftRacket.positionY + leftRacket.height)))
+    {
+        ball.directionX *= -1;
+        ball.directionY *= -1;
+    }
+
+//    qDebug() << "ball.positionY " << ball.positionY;
+//    qDebug() << "ball.positionX " << ball.positionX;
+//    qDebug() << "rightRacket.positionY " << rightRacket.positionY;
+//    qDebug() << "rightRacket.positionX " << rightRacket.positionX;
+
+    if ((ball.positionX >= rightRacket.positionX) && (ball.positionY > rightRacket.positionY) &&
+            (ball.positionY < (rightRacket.positionY + leftRacket.height)))
+    {
+        // qDebug() << "inside if";
+        ball.directionX *= -1;
         ball.directionY *= -1;
     }
 }
