@@ -27,6 +27,11 @@ void Game::timerEvent(QTimerEvent *)
 {
     moveBall();
     repaint();
+
+    if (leftScore >= 10 || rightScore >= 10)
+    {
+        endGame();
+    }
 }
 
 void Game::doPainting()
@@ -39,6 +44,16 @@ void Game::doPainting()
     rightRacket.draw(painter);
 
     ball.draw(painter);
+
+    if (leftScore >= 10 || rightScore >= 10)
+    {
+        QFont font("Score", Table::FONT_SIZE * 2, QFont::DemiBold);
+        painter.setFont(font);
+        painter.setPen(Qt::blue);
+
+        QString message = "GAME OVER";
+        painter.drawText(WINDOW_WIDTH / 5 , WINDOW_HEIGHT / 2, message);
+    }
 }
 
 void Game::moveBall()
@@ -93,6 +108,11 @@ void Game::keyPressEvent(QKeyEvent *e)
 
     QWidget::keyPressEvent(e);
     repaint();
+}
+
+void Game::endGame()
+{
+    killTimer(timerId);
 }
 
 

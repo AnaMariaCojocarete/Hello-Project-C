@@ -23,6 +23,7 @@ private:
     void doPainting();
     void moveBall();
     void moveRackets(int key);
+    void endGame();
 
     static const int WINDOW_WIDTH            = 1000;
     static const int WINDOW_HEIGHT           = 800;

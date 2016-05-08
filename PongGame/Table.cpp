@@ -11,16 +11,17 @@ void Table::draw(QPainter &painter, int leftScore, int rightScore)
     painter.setBrush(QBrush(Qt::black));
     painter.drawRect(0, 0, width, height);
 
-    QString message = "1";
-    QFont font("Score", 15, QFont::DemiBold);
-    QFontMetrics fm(font);
-    int textWidth = fm.width(message);
-
-
-    painter.setFont(font);
-
-//    painter.translate(QPoint(300/2, 500/2));
+    painter.setPen(Qt::white);
     painter.setBrush(QBrush(Qt::white));
-    painter.drawText(-textWidth/2, 0, message);
+    painter.drawRect(490, 0, 20, 800);
 
+    QFont font("Score", FONT_SIZE, QFont::DemiBold);
+    painter.setFont(font);
+    painter.setPen(Qt::white);
+
+    QString message = QString::number(leftScore);
+    painter.drawText(LEFT_SCORE_X, LEFT_SCORE_Y, message);
+
+    message = QString::number(rightScore);
+    painter.drawText(RIGHT_SCORE_X, RIGHT_SCORE_Y, message);
 }
