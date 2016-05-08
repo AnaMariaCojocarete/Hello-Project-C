@@ -13,14 +13,15 @@ TEMPLATE = app
 CONFIG += c++11
 
 SOURCES += main.cpp\
-        MainWindow.cpp \
     Racket.cpp \
     Table.cpp \
-    Ball.cpp
+    Ball.cpp \
+    Game.cpp
 
-HEADERS  += MainWindow.h \
+HEADERS  += \
     Racket.h \
     Table.h \
-    Ball.h
+    Ball.h \
+    Game.h
 
 FORMS    +=

@@ -7,7 +7,7 @@ class Table
 {
 public:
     Table(int width, int height);
-    void draw(QPainter& painter);
+    void draw(QPainter& painter, int leftScore, int rightScore);
 
     int width;
     int height;

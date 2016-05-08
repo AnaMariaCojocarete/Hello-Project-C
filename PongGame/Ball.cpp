@@ -11,7 +11,7 @@ Ball::Ball(int positionX, int positionY, int width, int height, int speedX, int 
 {}
 
 void Ball::move(int windowWidth, int windowHeight, int leftRacketWidth,
-                const Racket& leftRacket, const Racket& rightRacket)
+                const Racket& leftRacket, const Racket& rightRacket, int& leftScore, int& rightScore)
 {
     positionX += directionX;
     if ((positionX >= windowWidth) || (positionX <= 0))
@@ -28,6 +28,7 @@ void Ball::move(int windowWidth, int windowHeight, int leftRacketWidth,
     if ((positionX <= leftRacket.positionX + leftRacketWidth) && (positionY > leftRacket.positionY) &&
             (positionY < (leftRacket.positionY + leftRacket.height)))
     {
+        ++rightScore;
         directionX *= -1;
         directionY *= -1;
     }
@@ -41,6 +42,7 @@ void Ball::move(int windowWidth, int windowHeight, int leftRacketWidth,
             (positionY < (rightRacket.positionY + leftRacket.height)))
     {
         // qDebug() << "inside if";
+        ++leftScore;
         directionX *= -1;
         directionY *= -1;
     }
