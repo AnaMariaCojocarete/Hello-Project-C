@@ -51,38 +51,9 @@ void MainWindow::doPainting() {
 
 void MainWindow::moveBall()
 {
-    ball.positionX += ball.directionX;
-    if ((ball.positionX >= WINDOW_WIDTH) || (ball.positionX <= 0))
-    {
-        ball.directionX *= -1;
-    }
-
-    ball.positionY += ball.directionY;
-    if ((ball.positionY >= WINDOW_HEIGHT) || (ball.positionY <=0))
-    {
-        ball.directionY *= -1;
-    }
-
-    if ((ball.positionX <= leftRacket.positionX + LEFT_RACKET_WIDTH) && (ball.positionY > leftRacket.positionY) &&
-            (ball.positionY < (leftRacket.positionY + leftRacket.height)))
-    {
-        ball.directionX *= -1;
-        ball.directionY *= -1;
-    }
-
-//    qDebug() << "ball.positionY " << ball.positionY;
-//    qDebug() << "ball.positionX " << ball.positionX;
-//    qDebug() << "rightRacket.positionY " << rightRacket.positionY;
-//    qDebug() << "rightRacket.positionX " << rightRacket.positionX;
-
-    if ((ball.positionX >= rightRacket.positionX) && (ball.positionY > rightRacket.positionY) &&
-            (ball.positionY < (rightRacket.positionY + leftRacket.height)))
-    {
-        // qDebug() << "inside if";
-        ball.directionX *= -1;
-        ball.directionY *= -1;
-    }
+    ball.move(WINDOW_WIDTH, WINDOW_HEIGHT, LEFT_RACKET_WIDTH, leftRacket, rightRacket);
 }
+
 
 void MainWindow::moveRackets(int key)
 {
