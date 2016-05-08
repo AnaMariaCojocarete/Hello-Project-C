@@ -7,12 +7,12 @@
 #include "Racket.h"
 #include "Table.h"
 
-class MainWindow : public QMainWindow
+class Game : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit Game(QWidget *parent = 0);
 
 protected:
     void paintEvent(QPaintEvent *e);

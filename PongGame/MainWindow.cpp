@@ -6,7 +6,7 @@
 #include "Ball.h"
 
 
-MainWindow::MainWindow(QWidget *parent)
+Game::Game(QWidget *parent)
     : QMainWindow(parent)
     , ball(BALL_START_X, BALL_START_Y, BALL_SIZE, BALL_SIZE, BALL_SPEED_X, BALL_SPEED_Y)
     , leftRacket(LEFT_RACKET_START_X, LEFT_RACKET_START_Y, LEFT_RACKET_WIDTH, LEFT_RACKET_HEIGHT)
@@ -18,20 +18,20 @@ MainWindow::MainWindow(QWidget *parent)
     timerId = startTimer(3);
 }
 
-void MainWindow::paintEvent(QPaintEvent *e) {
+void Game::paintEvent(QPaintEvent *e) {
 
     Q_UNUSED(e);
 
     doPainting();
 }
 
-void MainWindow::timerEvent(QTimerEvent *)
+void Game::timerEvent(QTimerEvent *)
 {
     moveBall();
     repaint();
 }
 
-void MainWindow::doPainting()
+void Game::doPainting()
 {
     QPainter painter(this);
 
@@ -43,13 +43,13 @@ void MainWindow::doPainting()
     ball.draw(painter);
 }
 
-void MainWindow::moveBall()
+void Game::moveBall()
 {
     ball.move(WINDOW_WIDTH, WINDOW_HEIGHT, LEFT_RACKET_WIDTH, leftRacket, rightRacket);
 }
 
 
-void MainWindow::moveRackets(int key)
+void Game::moveRackets(int key)
 {
     if (key == Qt::Key_Q)
     {
@@ -88,7 +88,7 @@ void MainWindow::moveRackets(int key)
     }
 }
 
-void MainWindow::keyPressEvent(QKeyEvent *e)
+void Game::keyPressEvent(QKeyEvent *e)
 {
     int key = e->key();
     moveRackets(key);
