@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ball(BALL_START_X, BALL_START_Y, BALL_SIZE, BALL_SIZE, BALL_SPEED_X, BALL_SPEED_Y)
     , leftRacket(LEFT_RACKET_START_X, LEFT_RACKET_START_Y, LEFT_RACKET_WIDTH, LEFT_RACKET_HEIGHT)
     , rightRacket(RIGHT_RACKET_START_X, RIGHT_RACKET_START_Y, RIGHT_RACKET_WIDTH, RIGHT_RACKET_HEIGHT)
+    , table(WINDOW_WIDTH, WINDOW_HEIGHT)
 
 {
     resize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -30,23 +31,16 @@ void MainWindow::timerEvent(QTimerEvent *)
     repaint();
 }
 
-void MainWindow::doPainting() {
+void MainWindow::doPainting()
+{
     QPainter painter(this);
 
-    Table table(WINDOW_WIDTH, WINDOW_HEIGHT);
+    table.draw(painter);
 
-    painter.setPen(Qt::black);
-    painter.setBrush(QBrush(Qt::black));
-    painter.drawRect(0, 0, table.width, table.height);
+    leftRacket.draw(painter);
+    rightRacket.draw(painter);
 
-    painter.setPen(Qt::red);
-    painter.setBrush(QBrush(Qt::red));
-    painter.drawRect(leftRacket.positionX, leftRacket.positionY, leftRacket.width, leftRacket.height);
-    painter.drawRect(rightRacket.positionX, rightRacket.positionY, rightRacket.width, rightRacket.height);
-
-    painter.setPen(Qt::green);
-    painter.setBrush(QBrush(Qt::green));
-    painter.drawRect(ball.positionX, ball.positionY, ball.width, ball.height);
+    ball.draw(painter);
 }
 
 void MainWindow::moveBall()

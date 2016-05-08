@@ -5,6 +5,7 @@
 #include <QKeyEvent>
 #include "Ball.h"
 #include "Racket.h"
+#include "Table.h"
 
 class MainWindow : public QMainWindow
 {
@@ -43,7 +44,7 @@ private:
     Ball ball ;
     Racket leftRacket;
     Racket rightRacket;
-
+    Table table;
 };
 
 #endif // MAINWINDOW_H

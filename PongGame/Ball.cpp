@@ -1,3 +1,4 @@
+#include <QPainter>
 #include "Ball.h"
 
 Ball::Ball(int positionX, int positionY, int width, int height, int speedX, int speedY)
@@ -43,5 +44,12 @@ void Ball::move(int windowWidth, int windowHeight, int leftRacketWidth,
         directionX *= -1;
         directionY *= -1;
     }
+}
+
+void Ball::draw(QPainter& painter)
+{
+    painter.setPen(Qt::green);
+    painter.setBrush(QBrush(Qt::green));
+    painter.drawRect(positionX, positionY, width, height);
 }
 
