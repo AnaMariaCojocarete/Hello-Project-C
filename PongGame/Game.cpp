@@ -66,38 +66,22 @@ void Game::moveRackets(int key)
 {
     if (key == Qt::Key_Q)
     {
-        leftRacket.positionY -= 50;
-        if (leftRacket.positionY <= 0)
-        {
-            leftRacket.positionY = 1;
-        }
+        leftRacket.moveUp();
     }
 
     if (key == Qt::Key_A)
     {
-        leftRacket.positionY += 50;
-        if (leftRacket.positionY >= (WINDOW_HEIGHT - LEFT_RACKET_HEIGHT))
-        {
-            leftRacket.positionY = (WINDOW_HEIGHT - LEFT_RACKET_HEIGHT);
-        }
+        leftRacket.moveDown(WINDOW_HEIGHT);
     }
 
     if (key == Qt::Key_Up)
     {
-        rightRacket.positionY -= 50;
-        if (rightRacket.positionY <= 0)
-        {
-            rightRacket.positionY = 1;
-        }
+        rightRacket.moveUp();
     }
 
     if (key == Qt::Key_Down)
     {
-        rightRacket.positionY += 50;
-        if (rightRacket.positionY >= (WINDOW_HEIGHT - RIGHT_RACKET_HEIGHT))
-        {
-            rightRacket.positionY = (WINDOW_HEIGHT - RIGHT_RACKET_HEIGHT);
-        }
+        rightRacket.moveDown(WINDOW_HEIGHT);
     }
 }
 
