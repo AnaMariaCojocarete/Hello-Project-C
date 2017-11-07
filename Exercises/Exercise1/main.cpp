@@ -9,7 +9,7 @@ int main()
     cin >> a;
     if ((a < 78) && (a > 56))
     {
-        cout << "You win\n";
+        cout << "You wiin\n";
     }
     else
     {
